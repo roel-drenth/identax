@@ -1,0 +1,76 @@
+[project]
+name = "identax"
+version = "0.1.0"
+description = "A toolbox for efficient learning of linear, parameter-varying, and nonlinear systems in JAX."
+readme = "README.md"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Roel Drenth", email = "r.drenth@tue.nl" }
+]
+keywords = [
+    "system identification",
+    "linear parameter-varying systems",
+    "nonlinear systems",
+    "linear fractional representation",
+    "state-space models",
+    "JAX",
+    "Equinox",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "equinox>=0.13.7",
+    "jax>=0.12.0",
+    "jaxtyping>=0.3.0",
+    "optax>=0.2.8",
+]
+
+[project.urls]
+Repository = "https://github.com/roel-drenth/identax"
+Issues = "https://github.com/roel-drenth/identax/issues"
+
+[project.optional-dependencies]
+examples = [
+    "matplotlib>=3.10.9",
+    "nonlinear-benchmarks>=1.0.1",
+    "scipy>=1.14.0",
+]
+
+dev = [
+    "ruff>=0.15.12",
+]
+
+# GPU support: pick one (requires NVIDIA driver >= 580 for CUDA 13, >= 525 for CUDA 12)
+cuda = [
+    "jax[cuda13]>=0.12.0",
+]
+
+cuda12 = [
+    "jax[cuda12]>=0.12.0",
+]
+
+[tool.uv]
+conflicts = [
+    [{ extra = "cuda" }, { extra = "cuda12" }],
+]
+
+
+[tool.ruff.lint.per-file-ignores]
+# jax_enable_x64 must be set before submodules import jax.numpy
+"src/identax/__init__.py" = ["E402"]
+
+[build-system]
+requires = ["uv_build>=0.11.8,<0.12.0"]
+build-backend = "uv_build"
+

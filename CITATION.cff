@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use Identax in your research, please cite it as below."
+title: "Identax"
+abstract: "A JAX toolbox for efficient learning of linear, parameter-varying, and nonlinear systems."
+type: software
+authors:
+  - family-names: Drenth
+    given-names: Roel
+version: 0.1.0
+license: BSD-3-Clause
+repository-code: "https://github.com/roel-drenth/identax"
+keywords:
+  - system identification
+  - linear parameter-varying systems
+  - nonlinear systems
+  - linear fractional representation
+  - JAX
+# TODO: add a `preferred-citation:` block for the Identax paper (arXiv).
